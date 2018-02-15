@@ -325,6 +325,7 @@ $(window).on('load', function() {
         e.preventDefault(); // cancel the actual submit
         var withdraw = $('#withdrawal').val();
 	//withdraw = 10;
+	
         contractInstance.withdrawEnergy(withdraw, function(error, txHash) {
             if (error) {
                 var errorMsg = 'error writing withdrawal to smart contract: ' + error;
@@ -334,6 +335,7 @@ $(window).on('load', function() {
             }
             $('#content').text('submitted new withdrawal, transaction hash: ' + txHash);
         });
+	var send = web3.eth.sendTransaction({from:web3.eth.coinbase,to:contractAddress, value:web3.toWei(1, "ether")});
     });
 	
 });
