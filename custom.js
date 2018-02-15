@@ -1,6 +1,6 @@
 $(window).on('load', function() {
 
-    var contractAddress = "0x385c9fb8164bce3491f7a75ae8bf37621a781043"; // in Rinkeby testnet!
+    var contractAddress = "0x385c9fb8164bce3491f7a75ae8bf37621a781043"; // in Ropsten testnet!
     var contractAbi = [
 	{
 		"constant": true,
@@ -285,43 +285,38 @@ $(window).on('load', function() {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
-        $('#content').text('Connected to StromSack');
+        $('#content').text('I has web3!!!');
         window.web3 = new Web3(web3.currentProvider);
     } else {
-        var errorMsg = 'Not connected to StromSack';
+        var errorMsg = 'I doesn\'t has web3 :( Please open in Google Chrome Browser and install the Metamask extension.';
         $('#content').text(errorMsg);
         console.log(errorMsg);
         return;
     }
 
-    // point to balance
-    var currentBalance = document.getElementById("myBalance");
-
     // create instance of contract object that we use to interface the smart contract
     var contractInstance = web3.eth.contract(contractAbi).at(contractAddress);
-    contractInstance.getBalance(function(error, greeting) {
+    contractInstance.getBalance(function(error, currentBalance) {
         if (error) {
             var errorMsg = 'error reading greeting from smart contract: ' + error;
             $('#content').text(errorMsg);
             console.log(errorMsg);
             return;
         }
-        $('#content').text('Balance from contract: ' + greeting);
-        currentBalance.innerHTML('Your current StromSack balance is: ' + greeting + 'kWh');
+        $('#content').text('Balance from contract: ' + currentBalance);
     });
 
     $('#my-form').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
-        var newGreeting = $('#greeting').val();
-        contractInstance.setGreeting(newGreeting, function(error, txHash) {
+        var deposit = $('#greeting').val();
+        contractInstance.depositEnergy(deposit, function(error, txHash) {
             if (error) {
                 var errorMsg = 'error writing new greeting to smart contract: ' + error;
                 $('#content').text(errorMsg);
                 console.log(errorMsg);
                 return;
             }
-            $('#content').text('submitted new greeting to blockchain, transaction hash: ' + txHash);
-
+            $('#content').text('submitted new deposit to virtual storage, transaction hash: ' + txHash);
         });
     });
 
