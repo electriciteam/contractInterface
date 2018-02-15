@@ -324,23 +324,6 @@ $(window).on('load', function() {
 
         });
     });
-	
-    $('#callBalance').on('submit', function(e) {
-        e.preventDefault(); // cancel the actual submit
-        
-	    
-	    contractInstance.getBalance(function(error, greeting) {
-		if (error) {
-		    var errorMsg = 'error reading greeting from smart contract: ' + error;
-		    $('#content').text(errorMsg);
-		    console.log(errorMsg);
-		    return;
-		}
-		$('#content').text('Balance from contract: ' + greeting);
-		currentBalance.innerHTML('Your current StromSack balance is: ' + greeting + 'kWh');
-	    });
 
-        });
-    });
 
 });
