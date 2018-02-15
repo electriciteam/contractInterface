@@ -311,7 +311,7 @@ $(window).on('load', function() {
         var deposit = $('#greeting').val();
         contractInstance.depositEnergy(deposit, function(error, txHash) {
             if (error) {
-                var errorMsg = 'error writing new greeting to smart contract: ' + error;
+                var errorMsg = 'error writing deposit to smart contract: ' + error;
                 $('#content').text(errorMsg);
                 console.log(errorMsg);
                 return;
@@ -320,4 +320,18 @@ $(window).on('load', function() {
         });
     });
 
+    $('#withdraw-form').on('submit', function(e) {
+        e.preventDefault(); // cancel the actual submit
+        var withdraw = $('#withdrawal').val();
+        contractInstance.withdrawEnergy(withdraw, function(error, txHash) {
+            if (error) {
+                var errorMsg = 'error writing withdrawal to smart contract: ' + error;
+                $('#content').text(errorMsg);
+                console.log(errorMsg);
+                return;
+            }
+            $('#content').text('submitted new withdrawal, transaction hash: ' + txHash);
+        });
+    });
+	
 });
