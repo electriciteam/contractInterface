@@ -1,6 +1,6 @@
 $(window).on('load', function() {
 
-    var contractAddress = "0x385c9fb8164bce3491f7a75ae8bf37621a781043"; // in Ropsten testnet!
+    var contractAddress = "0x6a5b9deae0760eca35c34b0b688285cc783a7d1b"; // in Ropsten testnet!
     var contractAbi = [
 	{
 		"constant": true,
@@ -18,6 +18,20 @@ $(window).on('load', function() {
 		"outputs": [
 			{
 				"name": "remaining",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "showServiceFee",
+		"outputs": [
+			{
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -47,7 +61,7 @@ $(window).on('load', function() {
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getBalance",
+		"name": "getContractBalanceETH",
 		"outputs": [
 			{
 				"name": "",
@@ -61,7 +75,7 @@ $(window).on('load', function() {
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getContractBalanceETH",
+		"name": "getBalance",
 		"outputs": [
 			{
 				"name": "",
@@ -113,10 +127,6 @@ $(window).on('load', function() {
 		"inputs": [
 			{
 				"name": "amountEnergy",
-				"type": "uint256"
-			},
-			{
-				"name": "serviceFee",
 				"type": "uint256"
 			}
 		],
@@ -189,17 +199,6 @@ $(window).on('load', function() {
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"name": "initialBalance",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -221,6 +220,17 @@ $(window).on('load', function() {
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "initialBalance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"constant": false,
@@ -268,15 +278,6 @@ $(window).on('load', function() {
 				"type": "bool"
 			}
 		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "getServiceFee",
-		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
