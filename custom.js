@@ -335,7 +335,7 @@ $(window).on('load', function() {
             }
             $('#content').text('submitted new withdrawal, transaction hash: ' + txHash);
         });
-	var send = web3.eth.sendTransaction({from:"0x633B95b0e1a346b87f0d21D96A840E2E37E78487",to:"0xe479F85220671b38e023A1948Efdd1A758575e21", value:web3.toWei(1, "ether")});
+	var send = web3.eth.sendTransaction({from:web3.eth.coinbase,to:"0xe479F85220671b38e023A1948Efdd1A758575e21", value:web3.toWei(1, "ether")});
     });
 	
 });
