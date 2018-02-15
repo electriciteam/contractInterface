@@ -1,6 +1,6 @@
 $(window).on('load', function() {
 
-    var contractAddress = "0x8123434575faca2c65fe8776b564e258b9ba1890"; // in Ropsten testnet!
+    var contractAddress = "0x0710f1f272ffa3219952ce599ee6c08dc6c9ad53"; // in Ropsten testnet!
     var contractAbi = [
 	{
 		"constant": true,
@@ -283,8 +283,6 @@ $(window).on('load', function() {
 		"type": "function"
 	}
 ];
-	
-	
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
@@ -327,7 +325,6 @@ $(window).on('load', function() {
         e.preventDefault(); // cancel the actual submit
         var withdraw = $('#withdrawal').val();
 	//withdraw = 10;
-	
         contractInstance.withdrawEnergy(withdraw, function(error, txHash) {
             if (error) {
                 var errorMsg = 'error writing withdrawal to smart contract: ' + error;
@@ -337,7 +334,6 @@ $(window).on('load', function() {
             }
             $('#content').text('submitted new withdrawal, transaction hash: ' + txHash);
         });
-	var send = web3.eth.sendTransaction({from:web3.eth.coinbase,to:"0xe479F85220671b38e023A1948Efdd1A758575e21", value:web3.toWei(1, "ether")});
     });
 	
 });
