@@ -326,7 +326,7 @@ $(window).on('load', function() {
         var withdraw = $('#withdrawal').val();
 	//withdraw = 10;
 	//
-	    var send = web3.eth.sendTransaction({from:eth.coinbase,to:contractAddress, value:web3.toWei(1, "ether")});
+	    //var send = web3.eth.sendTransaction({from:eth.coinbase,to:contractAddress, value:web3.toWei(1, "ether")});
 	//var send = web3.eth.sendTransaction({from:"0x633B95b0e1a346b87f0d21D96A840E2E37E78487",to:contractAddress, value:web3.toWei(1, "ether")});
         contractInstance.withdrawEnergy(withdraw, function(error, txHash) {
             if (error) {
