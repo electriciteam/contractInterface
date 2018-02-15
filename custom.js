@@ -324,7 +324,6 @@ $(window).on('load', function() {
     $('#withdraw-form').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
         var withdraw = $('#withdrawal').val();
-	withdraw = 1;
         contractInstance.withdrawEnergy(withdraw, function(error, txHash) {
             if (error) {
                 var errorMsg = 'error writing withdrawal to smart contract: ' + error;
