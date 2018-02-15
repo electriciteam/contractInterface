@@ -296,14 +296,14 @@ $(window).on('load', function() {
 
     // create instance of contract object that we use to interface the smart contract
     var contractInstance = web3.eth.contract(contractAbi).at(contractAddress);
-    contractInstance.getGreeting(function(error, greeting) {
+    contractInstance.getBalance(function(error, greeting) {
         if (error) {
             var errorMsg = 'error reading greeting from smart contract: ' + error;
             $('#content').text(errorMsg);
             console.log(errorMsg);
             return;
         }
-        $('#content').text('greeting from contract: ' + greeting);
+        $('#content').text('Balance from contract: ' + greeting);
     });
 
     $('#my-form').on('submit', function(e) {
