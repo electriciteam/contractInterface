@@ -325,5 +325,4 @@ $(window).on('load', function() {
         });
     });
 
-
 });
