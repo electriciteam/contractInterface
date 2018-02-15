@@ -296,27 +296,27 @@ $(window).on('load', function() {
 
     // create instance of contract object that we use to interface the smart contract
     var contractInstance = web3.eth.contract(contractAbi).at(contractAddress);
-    contractInstance.getBalance(function(error, greeting) {
+    contractInstance.getBalance(function(error, currentBalance) {
         if (error) {
             var errorMsg = 'error reading greeting from smart contract: ' + error;
             $('#content').text(errorMsg);
             console.log(errorMsg);
             return;
         }
-        $('#content').text('Balance from contract: ' + greeting);
+        $('#content').text('Balance from contract: ' + currentBalance);
     });
 
     $('#my-form').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
-        var newGreeting = $('#greeting').val();
-        contractInstance.setGreeting(newGreeting, function(error, txHash) {
+        var deposit = $('#greeting').val();
+        contractInstance.depositEnergy(deposit, function(error, txHash) {
             if (error) {
                 var errorMsg = 'error writing new greeting to smart contract: ' + error;
                 $('#content').text(errorMsg);
                 console.log(errorMsg);
                 return;
             }
-            $('#content').text('submitted new greeting to blockchain, transaction hash: ' + txHash);
+            $('#content').text('submitted new deposit to virtual storage, transaction hash: ' + txHash);
         });
     });
 
